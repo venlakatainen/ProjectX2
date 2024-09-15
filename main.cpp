@@ -34,6 +34,7 @@ int main() {
     calculator(2.5, 2.5, 2.5)
     calculator('l', 2.5, 'p')
 
+    // add test comment
 
     return 0;
 }
