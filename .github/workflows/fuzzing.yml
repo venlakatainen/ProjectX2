@@ -10,11 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v4
-    - name: Build docker images
-      run: docker compose -f docker-compose.yml logs
-    - name: Setup database
-      run: docker compose run setup
-    - name: Run tests
-      run: docker compose run test
+    - uses: actions/checkout@v4
+    - name: Build and push
+      run: docker build . --file Dockerfile
+    - name: Run Docker file
+      run: docker run Dockerfile
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: workspace_artifacts
+        path: ${{ github.workspace }}
