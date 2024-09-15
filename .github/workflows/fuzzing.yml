@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build and push
-      run: docker build -t dockertest
+      run: docker build . --file Dockerfile --tag dockertest
     - name: run 
       run: docker run dockertest
     - name: Upload Build Artifacts
