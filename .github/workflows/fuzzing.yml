@@ -15,6 +15,8 @@ jobs:
       run: docker build . --file Dockerfile
     - name: run 
       run: docker run ubuntu:latest
+    - name: Dump docker logs
+      uses: jwalton/gh-docker-logs@v2
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
