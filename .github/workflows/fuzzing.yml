@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build and push
-      run: docker build . --file Dockerfile --tag dockertest
+      run: docker build . --file Dockerfile
     - name: run 
-      run: docker run dockertest
+      run: docker run ubuntu:latest
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
