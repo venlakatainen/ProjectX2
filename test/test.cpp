@@ -12,4 +12,10 @@ FUZZ_TEST_SETUP() {
 
 FUZZ_TEST(const uint8_t *data, size_t size) {
   /*Your code here*/
+  FuzzedDataProvider fuzzed_data(data, size);
+
+  float num1 = fuzzed_data.ConsumeFloatingPoint<double>();
+  float num2 = fuzzed_data.ConsumeFloatingPoint<double>();
+  std::string oper = fuzzed_data.ConsumeRandomLengthString();
+  calculator(num1, oper[0], num2);
 }
